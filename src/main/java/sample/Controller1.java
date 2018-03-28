@@ -30,7 +30,7 @@ public class Controller1 {
         MongoClient mongo = new MongoClient("localhost", 27017);
         DB db = mongo.getDB("RestaurantsInspections");
         DBCollection col = db.getCollection("inspection");
-        request=new Request("test","test",col);
+        request=new Request("test","test");
         request.add_docItem(item);
         request.add_docItem(item1);
         nameparam1.setText(request.getItems().get(0).getCategory());

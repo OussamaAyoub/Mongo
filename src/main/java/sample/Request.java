@@ -1,32 +1,28 @@
 package sample;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
+import com.mongodb.*;
 
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Request {
+public class Request implements Serializable {
     private String name;
     private String description;
     private ArrayList<Document_item> items;
-    private DBCollection collection;
 
-    public Request(String name, String description, DBCollection collection) {
+    public Request(String name, String description) {
         this.name = name;
         this.description = description;
-        this.collection = collection;
+
         items=new ArrayList<Document_item>();
     }
 
-    public Request(String name, String description, DBCollection collection, ArrayList<Document_item> items) {
+    public Request(String name, String description, ArrayList<Document_item> items) {
         this.name = name;
         this.description = description;
-        this.collection = collection;
         this.items = items;
     }
 
@@ -60,6 +56,9 @@ public class Request {
     }
 
     public DBCursor createRequest(){
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        DB db = mongo.getDB("RestaurantsInspections");
+        DBCollection collection = db.getCollection("inspection");
         BasicDBObject searchQuery = new BasicDBObject();
         for (Document_item element:items) {
             searchQuery.put(element.getCategory(),element.getValue());

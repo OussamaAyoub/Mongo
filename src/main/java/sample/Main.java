@@ -1,13 +1,23 @@
 package sample;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.sun.org.apache.regexp.internal.RE;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Main extends Application {
+    static ArrayList<String> lists;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/LoginPage.fxml"));
@@ -20,7 +30,10 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+        SLfile file=new SLfile();
+        file.Save();
+        file.Load();
         /*ArrayList<Request> requests=new ArrayList<Request>();
         Document_item item=new Document_item("name","Startbucks Coffee");
         Document_item item1=new Document_item("borough","Bronx");

@@ -1,6 +1,8 @@
 package sample;
 
-public class Document_item {
+import java.io.Serializable;
+
+public class Document_item implements Serializable {
     private String type;
     private String category;
     private String value;
