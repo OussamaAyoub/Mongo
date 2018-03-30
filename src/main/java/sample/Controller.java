@@ -45,6 +45,8 @@ public class Controller  {
     MenuBar menuBar;
     @FXML
     TextArea AreaResult;
+    @FXML
+    Button btnSearch;
 
     private ArrayList<Request> requests;
     private ArrayList<Aggregate> aggregates;
@@ -66,6 +68,12 @@ public class Controller  {
             item.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    btnSearch.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            clickSearch(event);
+                        }
+                    });
                     currentRequest=request;
                     int j=0;
                     for (Document_item doc_item:request.getItems()) {
