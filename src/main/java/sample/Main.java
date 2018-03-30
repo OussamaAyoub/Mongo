@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.print.Doc;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -36,8 +37,14 @@ public class Main extends Application {
         Document_item item1=new Document_item("borough","Bronx");
         MongoClient mongo = new MongoClient("localhost", 27017);
         DB db = mongo.getDB("RestaurantsInspections");
-
-        DBCollection col = db.getCollection("inspection");*/
+        ArrayList<Document_item> list=new ArrayList<Document_item>();
+        list.add(item);
+        list.add(item1);
+        DBCollection col = db.getCollection("inspection");
+        Request request=new Request("test","test",list);
+        requests.add(request);
+        SLfile sLfile=new SLfile();
+        sLfile.SaveRequest(requests);*/
 
         /*BasicDBObject searchQuery = new BasicDBObject();
         searchQuery.put("name", "Starbucks Coffee");
