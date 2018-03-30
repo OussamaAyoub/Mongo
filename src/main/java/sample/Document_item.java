@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Document_item implements Serializable {
     private String type;
     private String category;
-    private String value;
+    private Object value;
 
-    public Document_item(String category, String value) {
+    public Document_item(String category, Object value) {
         this.category = category;
         this.value = value;
     }
 
-    public Document_item(String type, String category, String value) {
+    public Document_item(String type, String category, Object value) {
         this.type = type;
         this.category = category;
         this.value = value;
@@ -34,11 +34,11 @@ public class Document_item implements Serializable {
         this.category = category;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 }

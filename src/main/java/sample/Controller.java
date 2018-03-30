@@ -1,5 +1,7 @@
 package sample;
 
+import com.mongodb.BasicDBObject;
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -137,7 +139,16 @@ public class Controller  {
             i++;
             String selector="#txtParam"+i;
             TextField txt=(TextField) menuBar.getScene().lookup(selector);
-            item.setValue(txt.getText());
+            System.out.println("SOHFELAZBJDPLCAJHZBKFJAZNAD");
+            System.out.println(item.getValue().getClass());
+            if(item.getValue().getClass().getName().equals("java.lang.String")){
+                item.setValue(txt.getText());
+            }
+            else {
+                int foo = Integer.parseInt(txt.getText());
+                item.setValue(new BasicDBObject("$gt",foo));
+            }
+
 
         }
         AreaResult.setText(currentRequest.ExecuteRequest());

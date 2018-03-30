@@ -30,8 +30,7 @@ public class LoginPageController {
     public void handle_btnLogin(ActionEvent actionEvent) {
 
         //AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!","Welcome " + userField.getText());
-
-        if ((userField.getText() == user )&&(passwordField.getText() == password)){
+        if ((userField.getText().equals(user))&&(passwordField.getText().equals(password))){
             ShowClientScreen();
         }
 

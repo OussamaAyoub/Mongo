@@ -12,6 +12,8 @@ public class Request implements Serializable {
     private String name;
     private String description;
     private ArrayList<Document_item> items;
+    private String host;
+    private String port;
 
     public Request(String name, String description) {
         this.name = name;
@@ -20,7 +22,7 @@ public class Request implements Serializable {
         items=new ArrayList<Document_item>();
     }
 
-    public Request(String name, String description, ArrayList<Document_item> items) {
+    public Request(String name,String description, ArrayList<Document_item> items) {
         this.name = name;
         this.description = description;
         this.items = items;
@@ -39,7 +41,7 @@ public class Request implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
+    public Object getDescription() {
         return description;
     }
 
@@ -53,6 +55,22 @@ public class Request implements Serializable {
 
     public void setItems(ArrayList<Document_item> items) {
         this.items = items;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 
     public String ExecuteRequest(){
