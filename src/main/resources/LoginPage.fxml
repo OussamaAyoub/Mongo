@@ -30,8 +30,8 @@
             <Label layoutX="243.0" layoutY="507.0" text="Connect to the MongoDB Server : " />
             <Label layoutX="292.0" layoutY="546.0" text="Host :" />
             <Label layoutX="293.0" layoutY="595.0" text="Port :" />
-            <TextField layoutX="366.0" layoutY="542.0" promptText="localhost" />
-            <TextField layoutX="366.0" layoutY="591.0" promptText="21017" />
+            <TextField fx:id="localhost" layoutX="366.0" layoutY="542.0" promptText="localhost" />
+            <TextField fx:id="port" layoutX="366.0" layoutY="591.0" promptText="21017" />
             <Label fx:id="errorMessage" layoutX="735.0" layoutY="426.0" textFill="#e84747" />
          </children></Pane>
     </children>

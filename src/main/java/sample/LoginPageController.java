@@ -16,6 +16,7 @@ import javafx.stage.Window;
 
 import java.beans.Visibility;
 import java.io.IOException;
+import java.rmi.ConnectIOException;
 import java.util.ArrayList;
 
 
@@ -25,6 +26,8 @@ public class LoginPageController {
     @FXML TextField userField;
     @FXML Button btnConnect;
     @FXML Label errorMessage;
+    @FXML TextField localhost;
+    @FXML TextField port;
 
     String user = "User";
     String password = "1234";
@@ -52,6 +55,20 @@ public class LoginPageController {
 
 
     public void ShowClientScreen(){
+        if(port.getText()!=null && localhost.getText()!=null){
+            Config.localhost=localhost.getText();
+            try{
+                Config.port=Integer.parseInt(port.getText());
+            }
+            catch (Exception e){
+                errorMessage.setText("Port should be a integer");
+            }
+
+        }
+        else{
+            Config.localhost="localhost";
+            Config.port=21017;
+        }
         Stage stage=(Stage) passwordField.getScene().getWindow();
         stage.close();
         final Stage s = new Stage();

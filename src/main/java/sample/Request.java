@@ -12,8 +12,6 @@ public class Request implements Serializable {
     private String name;
     private String description;
     private ArrayList<Document_item> items;
-    private String host;
-    private String port;
 
     public Request(String name, String description) {
         this.name = name;
@@ -41,7 +39,7 @@ public class Request implements Serializable {
         this.name = name;
     }
 
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -57,24 +55,9 @@ public class Request implements Serializable {
         this.items = items;
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public String getPort() {
-        return port;
-    }
-
-    public void setPort(String port) {
-        this.port = port;
-    }
 
     public String ExecuteRequest(){
-        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoClient mongo = new MongoClient(Config.localhost, Config.port);
         DB db = mongo.getDB("DBRestaurants");
         DBCollection collection = db.getCollection("InspectionRestaurant");
         BasicDBObject searchQuery = new BasicDBObject();
@@ -86,6 +69,7 @@ public class Request implements Serializable {
         while (cursor.hasNext()) {
             result+=cursor.next()+"\n";
         }
+        mongo.close();
         return result;
     }
     public void add_docItem(Document_item doc){

@@ -28,7 +28,7 @@ public class Controller  {
     @FXML
     Pane pane;
     @FXML
-    Label desc;
+    Label txtDesc;
    @FXML
    Label lblparam1;
     @FXML
@@ -75,6 +75,7 @@ public class Controller  {
                         }
                     });
                     currentRequest=request;
+                    txtDesc.setText(currentRequest.getDescription());
                     int j=0;
                     for (Document_item doc_item:request.getItems()) {
                         j++;
@@ -173,7 +174,15 @@ public class Controller  {
 
 
         }
-        String result=currentRequest.ExecuteRequest();
+        String result="";
+        try{
+            result=currentRequest.ExecuteRequest();
+        }
+        catch (Exception e){
+            AreaResult.setText("The connection to the database didn't work,verify the host, port, name of the database and collection");
+            return;
+        }
+
         if(result!=""){
             AreaResult.setText(currentRequest.ExecuteRequest());
         }
