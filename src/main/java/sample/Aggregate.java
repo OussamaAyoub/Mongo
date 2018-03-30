@@ -1,20 +1,17 @@
 package sample;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
+import com.mongodb.*;
 import org.bson.Document;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Aggregate {
+public class Aggregate implements Serializable {
     private String name;
     private String description;
-    private DBCollection col;
     private ArrayList<Document_item> list_items;
     private List<DBObject> list_object;
 
@@ -34,14 +31,6 @@ public class Aggregate {
         this.description = description;
     }
 
-    public DBCollection getCol() {
-        return col;
-    }
-
-    public void setCol(DBCollection col) {
-        this.col = col;
-    }
-
     public List<DBObject> getList() {
         return list_object;
     }
@@ -50,10 +39,17 @@ public class Aggregate {
         this.list_object = list;
     }
 
-    public Aggregate(String name, String description, DBCollection col, ArrayList<Document_item> list) {
+    public ArrayList<Document_item> getList_items() {
+        return list_items;
+    }
+
+    public void setList_items(ArrayList<Document_item> list_items) {
+        this.list_items = list_items;
+    }
+
+    public Aggregate(String name, String description,ArrayList<Document_item> list) {
         this.name = name;
         this.description = description;
-        this.col = col;
         this.list_items = list;
         for (Document_item item: list_items) {
             DBObject object=(DBObject) new BasicDBObject(item.getType(),new Document_item(item.getCategory(),item.getValue()));
@@ -63,9 +59,17 @@ public class Aggregate {
         this.list_items.add(item);
     }
 
-    private Iterable<DBObject> createAggregate(){
-        Iterable<DBObject> output = col.aggregate(list_object).results();
-        return output;
+    private String ExecuteAggregate(){
+        MongoClient mongo = new MongoClient(Config.localhost, Config.port);
+        DB db = mongo.getDB("DBRestaurants");
+        DBCollection collection = db.getCollection("InspectionRestaurant");
+        Iterable<DBObject> output = collection.aggregate(list_object).results();
+        String result="";
+        for (DBObject dbObject : output)
+        {
+            result+=dbObject.toString()+"\n";
+        }
+        return result;
     }
 
 

@@ -51,13 +51,21 @@ public class Controller  {
     private ArrayList<Request> requests;
     private ArrayList<Aggregate> aggregates;
     private Request currentRequest;
+    private Aggregate currentAggregate;
 
     @FXML
     public void initialize(){
         currentRequest=null;
+        currentAggregate=null;
         SLfile sLfile=new SLfile();
-        requests=sLfile.LoadRequest();
-        //aggregates=sLfile.LoadAggregate();
+        try{
+            requests=sLfile.LoadRequest();
+            aggregates=sLfile.LoadAggregate();
+        }
+        catch (Exception e){
+            AreaResult.setText("Files not found");
+        }
+
         int i=0;
         for (final Request request:requests) {
             i++;
@@ -86,8 +94,35 @@ public class Controller  {
                 }
             });
             menu.getItems().add(item);
-
-
+        }
+        i=0;
+        for (final Aggregate aggregate:aggregates) {
+            i++;
+            Menu menu=(Menu) menuBar.getMenus().get(1);
+            MenuItem item=new MenuItem();
+            item.setText(aggregate.getName());
+            item.setId("Aggregate"+i);
+            item.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    btnSearch.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            clickSearch(event);
+                        }
+                    });
+                    currentAggregate=aggregate;
+                    txtDesc.setText(currentAggregate.getDescription());
+                    int j=0;
+                    for (Document_item doc_item:aggregate.getList_items()) {
+                        j++;
+                        String selector="#lblparam"+j;
+                        Label label=(Label) menuBar.getScene().lookup(selector);
+                        label.setText(doc_item.getType()+" "+doc_item.getCategory());
+                    }
+                }
+            });
+            menu.getItems().add(item);
         }
     }
 
@@ -102,28 +137,34 @@ public class Controller  {
         Label label = new Label("Enter username and password");
         final TextField textUser = new TextField();
         textUser.setPromptText("enter user name");
-        TextField textPass = new TextField();
+        final TextField textPass = new TextField();
         textPass.setPromptText("enter password");
         Button btnLogin = new Button();
         btnLogin.setText("Login");
-
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
-                final Stage s = new Stage();
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("/admin.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                if ((textUser.getText().equals(Config.adminName))&&(textPass.getText().equals(Config.adminPassword))) {
+                    Stage stage1=(Stage) btnSearch.getScene().getWindow();
+                    stage1.close();
+                    final Stage s = new Stage();
+                    stage.close();
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("/admin.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    s.setTitle("Administrator Page");
+                    s.setScene(new Scene(root, 1200, 1000));
+                    s.show();
+
                 }
-                s.setTitle("Administrator Page");
-                s.setScene(new Scene(root, 500, 500));
-                s.show();
-
+                else{
+                    stage.close();
+                }
             }
-
         });
         box.getChildren().add(label);
         box.getChildren().add(textUser);
@@ -194,6 +235,8 @@ public class Controller  {
 
 
     public void click_quit(ActionEvent actionEvent) {
+        Stage stage1=(Stage) pane.getScene().getWindow();
+        stage1.close();
         final Stage s = new Stage();
         s.close();
         Parent root = null;

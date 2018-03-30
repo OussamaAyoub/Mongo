@@ -29,19 +29,12 @@ public class LoginPageController {
     @FXML TextField localhost;
     @FXML TextField port;
 
-    String user = "User";
-    String password = "1234";
-
-    String adminUser = "admin";
-    String adminPassword = "admin";
-
-
 
     public void handle_btnLogin(ActionEvent actionEvent) {
 
         //AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!","Welcome " + userField.getText());
 
-        if ((userField.getText().equals(user))&&(passwordField.getText().equals(password))){
+        if ((userField.getText().equals(Config.userName))&&(passwordField.getText().equals(Config.userPassword))){
             ShowClientScreen();
         } { errorMessage.setText("Incorrect input fields");}
 
@@ -72,6 +65,7 @@ public class LoginPageController {
         Stage stage=(Stage) passwordField.getScene().getWindow();
         stage.close();
         final Stage s = new Stage();
+
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("/client.fxml"));
@@ -108,7 +102,7 @@ public class LoginPageController {
                 @Override
                 public void handle(ActionEvent event) {
 
-                    if ((textUser.getText().equals(adminUser))&&(textPass.getText().equals(adminPassword))) {
+                    if ((textUser.getText().equals(Config.adminName))&&(textPass.getText().equals(Config.adminPassword))) {
                         final Stage s = new Stage();
                         stage.close();
                         Parent root = null;
