@@ -103,8 +103,6 @@ public class Controller  {
 
             @Override
             public void handle(ActionEvent event) {
-
-                //setLoggedInUser(textUser.getText());
                 final Stage s = new Stage();
                 Parent root = null;
                 try {
