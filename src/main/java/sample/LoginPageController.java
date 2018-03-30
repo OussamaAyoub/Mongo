@@ -27,11 +27,16 @@ public class LoginPageController {
     String user = "User";
     String password = "1234";
 
+    String adminUser = "admin";
+    String adminPassword = "admin";
+
+
+
     public void handle_btnLogin(ActionEvent actionEvent) {
 
         //AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!","Welcome " + userField.getText());
 
-        if ((userField.getText() == user )&&(passwordField.getText() == password)){
+        if ((userField.getText().equals(user))&&(passwordField.getText().equals(password))){
             ShowClientScreen();
         }
 
@@ -59,7 +64,9 @@ public class LoginPageController {
 
 
     }
+
     public void showLoginScreen() {
+
         Stage stage1=(Stage) passwordField.getScene().getWindow();
         stage1.close();
         final Stage stage = new Stage();
@@ -71,30 +78,35 @@ public class LoginPageController {
         Label label = new Label("Enter username and password");
         final TextField textUser = new TextField();
         textUser.setPromptText("enter user name");
-        TextField textPass = new TextField();
+        final TextField textPass = new TextField();
         textPass.setPromptText("enter password");
         Button btnLogin = new Button();
         btnLogin.setText("Login");
 
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(ActionEvent event) {
+                @Override
+                public void handle(ActionEvent event) {
 
-                final Stage s = new Stage();
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("/admin.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                s.setTitle("Administrator Page");
-                s.setScene(new Scene(root, 1200, 1000));
-                s.show();
+                    if ((textUser.getText().equals(adminUser))&&(textPass.getText().equals(adminPassword))){
+                    final Stage s = new Stage();
+                    stage.close();
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("/admin.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    s.setTitle("Administrator Page");
+                    s.setScene(new Scene(root, 1200, 1000));
+                    s.show();
 
-            }
+                }}
 
-        });
+            });
+
+
+
         box.getChildren().add(label);
         box.getChildren().add(textUser);
         box.getChildren().add(textPass);
