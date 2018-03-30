@@ -193,4 +193,17 @@ public class Controller  {
     }
 
 
+    public void click_quit(ActionEvent actionEvent) {
+        final Stage s = new Stage();
+        s.close();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/LoginPage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        s.setTitle("MongoDB Interface");
+        s.setScene(new Scene(root, 1200, 1000));
+        s.show();
+    }
 }
