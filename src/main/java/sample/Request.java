@@ -55,7 +55,7 @@ public class Request implements Serializable {
         this.items = items;
     }
 
-    public DBCursor createRequest(){
+    public String ExecuteRequest(){
         MongoClient mongo = new MongoClient("localhost", 27017);
         DB db = mongo.getDB("RestaurantsInspections");
         DBCollection collection = db.getCollection("inspection");
@@ -64,7 +64,11 @@ public class Request implements Serializable {
             searchQuery.put(element.getCategory(),element.getValue());
         }
         DBCursor cursor=collection.find(searchQuery);
-        return cursor;
+        String result="";
+        while (cursor.hasNext()) {
+            result+=cursor.next()+"\n";
+        }
+        return result;
     }
     public void add_docItem(Document_item doc){
         items.add(doc);

@@ -41,9 +41,12 @@ public class Controller  {
     Label lblparam6;
     @FXML
     MenuBar menuBar;
+    @FXML
+    TextArea AreaResult;
 
     private ArrayList<Request> requests;
     private ArrayList<Aggregate> aggregates;
+    private Request currentRequest;
 
     @FXML
     public void initialize(){
@@ -56,11 +59,12 @@ public class Controller  {
             i++;
             Menu menu=(Menu) menuBar.getMenus().get(0);
             MenuItem item=new MenuItem();
-            item.setText("Query"+i);
+            item.setText(request.getName());
             item.setId("Query"+i);
             item.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    currentRequest=request;
                     int j=0;
                     for (Document_item doc_item:request.getItems()) {
                         j++;
@@ -128,6 +132,15 @@ public class Controller  {
     }
 
     public void clickSearch(ActionEvent actionEvent) {
+        int i=0;
+        for (Document_item item:currentRequest.getItems()) {
+            i++;
+            String selector="#txtParam"+i;
+            TextField txt=(TextField) menuBar.getScene().lookup(selector);
+            item.setValue(txt.getText());
+
+        }
+        AreaResult.setText(currentRequest.ExecuteRequest());
     }
 
 
