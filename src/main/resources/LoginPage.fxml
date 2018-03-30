@@ -9,29 +9,30 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginPageController">
+<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginPageController">
     <children>
 
 
     <Pane layoutX="-1.0" prefHeight="1000.0" prefWidth="1200.0">
          <children>
-            <Label fx:id="title" layoutX="274.0" layoutY="118.0" text="W E L C O M E " textFill="#8d0a0a">
+            <Label fx:id="title" layoutX="458.0" layoutY="121.0" text="W E L C O M E " textFill="#8d0a0a">
                <font>
                   <Font size="37.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="304.0" layoutY="340.0" />
-            <TextField fx:id="userField" layoutX="304.0" layoutY="268.0" />
-            <Label layoutX="175.0" layoutY="273.0" text="Username :" textFill="#7c1d1d" />
-            <Label layoutX="175.0" layoutY="345.0" text="Passeword :" textFill="#862b2b" />
-            <Button fx:id="btnConnect" layoutX="358.0" layoutY="410.0" mnemonicParsing="false" onAction="#handle_btnLogin" text="Connect" />
-            <Separator layoutX="176.0" layoutY="478.0" prefHeight="0.0" prefWidth="413.0" />
+            <PasswordField fx:id="passwordField" layoutX="513.0" layoutY="354.0" />
+            <TextField fx:id="userField" layoutX="513.0" layoutY="269.0" />
+            <Label layoutX="375.0" layoutY="273.0" text="Username :" textFill="#7c1d1d" />
+            <Label layoutX="372.0" layoutY="358.0" text="Passeword :" textFill="#862b2b" />
+            <Button fx:id="btnConnect" layoutX="556.0" layoutY="419.0" mnemonicParsing="false" onAction="#handle_btnLogin" text="Connect" />
+            <Separator layoutX="243.0" layoutY="481.0" prefHeight="3.0" prefWidth="689.0" />
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handle_btnAdmin" text="Admin" />
-            <Label layoutX="176.0" layoutY="510.0" text="Connect to the MongoDB Server : " />
-            <Label layoutX="173.0" layoutY="555.0" text="Host :" />
-            <Label layoutX="174.0" layoutY="586.0" text="Port :" />
-            <TextField layoutX="223.0" layoutY="538.0" promptText="localhost" />
-            <TextField layoutX="223.0" layoutY="573.0" promptText="21017" />
+            <Label layoutX="243.0" layoutY="507.0" text="Connect to the MongoDB Server : " />
+            <Label layoutX="292.0" layoutY="546.0" text="Host :" />
+            <Label layoutX="293.0" layoutY="595.0" text="Port :" />
+            <TextField layoutX="366.0" layoutY="542.0" promptText="localhost" />
+            <TextField layoutX="366.0" layoutY="591.0" promptText="21017" />
+            <Label fx:id="errorMessage" layoutX="735.0" layoutY="426.0" textFill="#e84747" />
          </children></Pane>
     </children>
 </AnchorPane>

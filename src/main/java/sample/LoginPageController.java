@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.beans.Visibility;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class LoginPageController {
     PasswordField passwordField;
     @FXML TextField userField;
     @FXML Button btnConnect;
+    @FXML Label errorMessage;
 
     String user = "User";
     String password = "1234";
@@ -38,7 +40,7 @@ public class LoginPageController {
 
         if ((userField.getText().equals(user))&&(passwordField.getText().equals(password))){
             ShowClientScreen();
-        }
+        } { errorMessage.setText("Incorrect input fields");}
 
     }
 
@@ -89,20 +91,22 @@ public class LoginPageController {
                 @Override
                 public void handle(ActionEvent event) {
 
-                    if ((textUser.getText().equals(adminUser))&&(textPass.getText().equals(adminPassword))){
-                    final Stage s = new Stage();
-                    stage.close();
-                    Parent root = null;
-                    try {
-                        root = FXMLLoader.load(getClass().getResource("/admin.fxml"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    s.setTitle("Administrator Page");
-                    s.setScene(new Scene(root, 1200, 1000));
-                    s.show();
+                    if ((textUser.getText().equals(adminUser))&&(textPass.getText().equals(adminPassword))) {
+                        final Stage s = new Stage();
+                        stage.close();
+                        Parent root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/admin.fxml"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        s.setTitle("Administrator Page");
+                        s.setScene(new Scene(root, 1200, 1000));
+                        s.show();
 
-                }}
+                    }
+                }
+
 
             });
 
