@@ -9,15 +9,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAdmin">
+<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAdmin">
    <children>
       <Pane layoutX="-1.0" prefHeight="1000.0" prefWidth="1200.0">
          <children>
-            <Label layoutX="61.0" layoutY="55.0" text="Query's name :" />
-            <TextField fx:id="txtName" layoutX="254.0" layoutY="51.0" />
-            <Label layoutX="61.0" layoutY="118.0" text="Description :" />
-            <TextField fx:id="txtDesc" layoutX="254.0" layoutY="114.0" />
+            <Label layoutX="72.0" layoutY="138.0" text="Query's name :" />
+            <TextField fx:id="txtName" layoutX="254.0" layoutY="134.0" />
+            <Label layoutX="79.0" layoutY="187.0" text="Description :" />
+            <TextField fx:id="txtDesc" layoutX="254.0" layoutY="183.0" />
             <ChoiceBox fx:id="boxParam" layoutX="53.0" layoutY="280.0" prefWidth="150.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
@@ -40,6 +41,11 @@
             <Button fx:id="btnAdd" layoutX="263.0" layoutY="278.0" mnemonicParsing="false" onAction="#onclick" text="Add" />
             <TextArea fx:id="txtArea" layoutX="47.0" layoutY="337.0" prefHeight="163.0" prefWidth="540.0" />
             <Button fx:id="Confirm" layoutX="492.0" layoutY="542.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" text="Confirm" />
+            <Label layoutX="67.0" layoutY="46.0" text="Add new queries" textFill="#7c2f2f">
+               <font>
+                  <Font name="System Bold Italic" size="31.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

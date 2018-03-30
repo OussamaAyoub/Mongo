@@ -75,8 +75,8 @@ public class Request implements Serializable {
 
     public String ExecuteRequest(){
         MongoClient mongo = new MongoClient("localhost", 27017);
-        DB db = mongo.getDB("RestaurantsInspections");
-        DBCollection collection = db.getCollection("inspection");
+        DB db = mongo.getDB("DBRestaurants");
+        DBCollection collection = db.getCollection("InspectionRestaurant");
         BasicDBObject searchQuery = new BasicDBObject();
         for (Document_item element:items) {
             searchQuery.put(element.getCategory(),element.getValue());

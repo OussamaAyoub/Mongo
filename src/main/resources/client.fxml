@@ -9,8 +9,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns:ID="http://javafx.com/javafx/9.0.4" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns:ID="http://javafx.com/javafx/9.0.4" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
        <Pane fx:id="pane" layoutY="1.0" prefHeight="1000.0" prefWidth="1200.0">
            <MenuBar fx:id="menuBar">
@@ -19,39 +20,42 @@
                    </Menu>
                    <Menu fx:id="MenuAggregates" mnemonicParsing="false" text="Aggregate">
                        <items>
-                           <MenuItem fx:id="AggregQ1" mnemonicParsing="false" text="Queries 1"/>
-                           <MenuItem fx:id="AggregQ2" mnemonicParsing="false" text="Queries 2"/>
-                           <MenuItem fx:id="AggregQ3" mnemonicParsing="false" text="Queries 3"/>
+                           <MenuItem fx:id="AggregQ1" mnemonicParsing="false" text="Queries 1" />
+                           <MenuItem fx:id="AggregQ2" mnemonicParsing="false" text="Queries 2" />
+                           <MenuItem fx:id="AggregQ3" mnemonicParsing="false" text="Queries 3" />
 
                        </items>
                    </Menu>
                    <Menu mnemonicParsing="false" text="Setting">
                        <items>
-                           <MenuItem mnemonicParsing="false" onAction="#click_admin" text="Admin"/>
+                           <MenuItem mnemonicParsing="false" onAction="#click_admin" text="Admin" />
                        </items>
                    </Menu>
                </menus>
            </MenuBar>
 
-           <TextField fx:id="txtParam1" layoutX="113.0" layoutY="71.0"/>
-           <TextField fx:id="txtParam2" layoutX="113.0" layoutY="115.0"/>
-           <TextField fx:id="txtParam3" layoutX="113.0" layoutY="157.0"/>
-           <TextField fx:id="txtParam4" layoutX="419.0" layoutY="71.0"/>
-           <TextField fx:id="txtParam5" layoutX="419.0" layoutY="115.0"/>
-           <TextField fx:id="txtParam6" layoutX="419.0" layoutY="157.0"/>
+           <TextField fx:id="txtParam1" layoutX="112.0" layoutY="128.0" />
+           <TextField fx:id="txtParam2" layoutX="113.0" layoutY="213.0" />
+           <TextField fx:id="txtParam3" layoutX="113.0" layoutY="300.0" />
+           <TextField fx:id="txtParam4" layoutX="409.0" layoutY="128.0" />
+           <TextField fx:id="txtParam5" layoutX="409.0" layoutY="213.0" />
+           <TextField fx:id="txtParam6" layoutX="409.0" layoutY="300.0" />
 
-           <Label fx:id="lblparam1" layoutX="24.0" layoutY="76.0" text="Label"/>
-           <Label fx:id="lblparam2" layoutX="24.0" layoutY="120.0" text="Label"/>
-           <Label fx:id="lblparam3" layoutX="20.0" layoutY="162.0" text="Label"/>
-           <Label fx:id="lblparam4" layoutX="353.0" layoutY="76.0" text="Label"/>
-           <Label fx:id="lblparam5" layoutX="353.0" layoutY="120.0" text="Label"/>
-           <Label fx:id="lblparam6" layoutX="353.0" layoutY="162.0" text="Label"/>
+           <Label fx:id="lblparam1" layoutX="159.0" layoutY="102.0" text="Parameter 1" />
+           <Label fx:id="lblparam2" layoutX="159.0" layoutY="184.0" text="Parameter 2" />
+           <Label fx:id="lblparam3" layoutX="158.0" layoutY="276.0" text="Parameter 3" />
+           <Label fx:id="lblparam4" layoutX="454.0" layoutY="102.0" text="Parameter 4" />
+           <Label fx:id="lblparam5" layoutX="454.0" layoutY="184.0" text="Parameter 5" />
+           <Label fx:id="lblparam6" layoutX="454.0" layoutY="276.0" text="Parameter 6" />
 
 
-           <Button fx:id="btnSearch" layoutX="280.0" layoutY="199.0" mnemonicParsing="false" onAction="#clickSearch"
-                   text="Search"/>
-           <Label fx:id="desc" layoutX="24.0" layoutY="41.0" text="Description : "/>
-           <TextArea fx:id="AreaResult" layoutX="16.0" layoutY="232.0" prefHeight="152.0" prefWidth="590.0"/>
+           <Button fx:id="btnSearch" layoutX="720.0" layoutY="300.0" mnemonicParsing="false" onAction="#clickSearch" text="Search" />
+           <Label fx:id="desc" layoutX="24.0" layoutY="53.0" text="Description : " textFill="#832727">
+            <font>
+               <Font name="Bangla MN" size="13.0" />
+            </font></Label>
+           <TextArea fx:id="AreaResult" layoutX="218.0" layoutY="401.0" prefHeight="328.0" prefWidth="735.0" />
+         <TextField fx:id="txtDesc" layoutX="194.0" layoutY="48.0" />
 
 
        </Pane>
