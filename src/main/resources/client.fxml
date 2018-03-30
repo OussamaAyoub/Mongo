@@ -12,54 +12,48 @@
 
 <AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns:ID="http://javafx.com/javafx/9.0.4" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-       <Pane layoutY="1.0" prefHeight="1000.0" prefWidth="1200.0">
-           <children>
-               <MenuBar>
-                   <menus>
-                       <Menu fx:id="MenuRequests" mnemonicParsing="false" text="Simple Queries">
-                           <items>
-                               <MenuItem fx:id="SimpleQ1" mnemonicParsing="false" text="Search a restaurant" />
-                               <MenuItem fx:id="SimpleQ2" mnemonicParsing="false" text="Querie 2" />
-                               <MenuItem fx:id="SimpleQ3" mnemonicParsing="false" text="Querie 3" />
-                           </items>
-                       </Menu>
-                       <Menu fx:id="MenuAggregates" mnemonicParsing="false" text="Aggregate">
-                           <items>
-                               <MenuItem fx:id="AggregQ1" mnemonicParsing="false"  text="Queries 1" />
-                               <MenuItem fx:id="AggregQ2" mnemonicParsing="false"  text="Queries 2" />
-                               <MenuItem fx:id="AggregQ3" mnemonicParsing="false"  text="Queries 3" />
+       <Pane fx:id="pane" layoutY="1.0" prefHeight="438.0" prefWidth="623.0">
+           <MenuBar fx:id="menuBar">
+               <menus>
+                   <Menu fx:id="MenuRequests" mnemonicParsing="false" text="Simple Queries">
+                   </Menu>
+                   <Menu fx:id="MenuAggregates" mnemonicParsing="false" text="Aggregate">
+                       <items>
+                           <MenuItem fx:id="AggregQ1" mnemonicParsing="false" text="Queries 1"/>
+                           <MenuItem fx:id="AggregQ2" mnemonicParsing="false" text="Queries 2"/>
+                           <MenuItem fx:id="AggregQ3" mnemonicParsing="false" text="Queries 3"/>
 
-                           </items>
-                       </Menu>
-                       <Menu mnemonicParsing="false" text="Setting">
-                           <items>
-                               <MenuItem mnemonicParsing="false" onAction="#click_admin" text="Admin" />
-                           </items>
-                       </Menu>
-                   </menus>
-               </MenuBar>
+                       </items>
+                   </Menu>
+                   <Menu mnemonicParsing="false" text="Setting">
+                       <items>
+                           <MenuItem mnemonicParsing="false" onAction="#click_admin" text="Admin"/>
+                       </items>
+                   </Menu>
+               </menus>
+           </MenuBar>
 
-               <TextField fx:id="txtParam1" layoutX="113.0" layoutY="71.0" />
-               <TextField fx:id="txtParam2" layoutX="113.0" layoutY="115.0" />
-               <TextField fx:id="txtParam3" layoutX="113.0" layoutY="157.0" />
-               <TextField fx:id="txtParam4" layoutX="419.0" layoutY="71.0" />
-               <TextField fx:id="txtParam5" layoutX="419.0" layoutY="115.0" />
-               <TextField fx:id="txtParam6" layoutX="419.0" layoutY="157.0" />
+           <TextField fx:id="txtParam1" layoutX="113.0" layoutY="71.0"/>
+           <TextField fx:id="txtParam2" layoutX="113.0" layoutY="115.0"/>
+           <TextField fx:id="txtParam3" layoutX="113.0" layoutY="157.0"/>
+           <TextField fx:id="txtParam4" layoutX="419.0" layoutY="71.0"/>
+           <TextField fx:id="txtParam5" layoutX="419.0" layoutY="115.0"/>
+           <TextField fx:id="txtParam6" layoutX="419.0" layoutY="157.0"/>
 
-               <Label fx:id="lblparam1" layoutX="24.0" layoutY="76.0" text="Name" />
-               <Label fx:id="lblparam2" layoutX="24.0" layoutY="120.0" text="Cuisine" />
-               <Label fx:id="lblparam3" layoutX="20.0" layoutY="162.0" text="Borough" />
-               <Label fx:id="lblparam4" layoutX="353.0" layoutY="76.0" text="Label" />
-               <Label fx:id="lblparam5" layoutX="353.0" layoutY="120.0" text="Label" />
-               <Label fx:id="lblparam6" layoutX="353.0" layoutY="162.0" text="Label" />
+           <Label fx:id="lblparam1" layoutX="24.0" layoutY="76.0" text="Label"/>
+           <Label fx:id="lblparam2" layoutX="24.0" layoutY="120.0" text="Label"/>
+           <Label fx:id="lblparam3" layoutX="20.0" layoutY="162.0" text="Label"/>
+           <Label fx:id="lblparam4" layoutX="353.0" layoutY="76.0" text="Label"/>
+           <Label fx:id="lblparam5" layoutX="353.0" layoutY="120.0" text="Label"/>
+           <Label fx:id="lblparam6" layoutX="353.0" layoutY="162.0" text="Label"/>
 
 
-               <Button fx:id="btnSearch" layoutX="280.0" layoutY="199.0" mnemonicParsing="false" onAction="#clickSearch" text="Search" />
-               <Label fx:id="desc" layoutX="24.0" layoutY="41.0" text="Description : " />
-            <TextArea layoutX="16.0" layoutY="232.0" prefHeight="152.0" prefWidth="590.0" />
+           <Button fx:id="btnSearch" layoutX="280.0" layoutY="199.0" mnemonicParsing="false" onAction="#clickSearch"
+                   text="Search"/>
+           <Label fx:id="desc" layoutX="24.0" layoutY="41.0" text="Description : "/>
+           <TextArea fx:id="AreaResult" layoutX="16.0" layoutY="232.0" prefHeight="152.0" prefWidth="590.0"/>
 
 
-           </children>
        </Pane>
 
    </children>

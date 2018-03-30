@@ -39,11 +39,8 @@ public class Controller1 {
     public void Search(){
         request.getItems().get(0).setValue(param1.getText());
         request.getItems().get(1).setValue(param2.getText());
-        DBCursor cursor=request.createRequest();
-        StringBuilder fieldContent = new StringBuilder("");
-        while (cursor.hasNext()) {
-            fieldContent.append(cursor.next().toString()+"\n");
-        }
-        result.setText(fieldContent.toString());
+        String result1=request.ExecuteRequest();
+
+        result.setText(result1);
     }
 }

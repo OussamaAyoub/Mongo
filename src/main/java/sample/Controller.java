@@ -12,6 +12,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,6 +23,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller  {
+    @FXML
+    Pane pane;
     @FXML
     Label desc;
    @FXML
@@ -36,16 +40,45 @@ public class Controller  {
     @FXML
     Label lblparam6;
     @FXML
-    MenuItem AggregQ1;
+    MenuBar menuBar;
+    @FXML
+    TextArea AreaResult;
 
     private ArrayList<Request> requests;
     private ArrayList<Aggregate> aggregates;
+    private Request currentRequest;
 
     @FXML
     public void initialize(){
+
         SLfile sLfile=new SLfile();
         requests=sLfile.LoadRequest();
-        aggregates=sLfile.LoadAggregate();
+        //aggregates=sLfile.LoadAggregate();
+        int i=0;
+        for (final Request request:requests) {
+            i++;
+            Menu menu=(Menu) menuBar.getMenus().get(0);
+            MenuItem item=new MenuItem();
+            item.setText(request.getName());
+            item.setId("Query"+i);
+            item.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    currentRequest=request;
+                    int j=0;
+                    for (Document_item doc_item:request.getItems()) {
+                        j++;
+                        String selector="#lblparam"+j;
+                        Label label=(Label) menuBar.getScene().lookup(selector);
+                        System.out.println(label.getId());
+                        label.setText(doc_item.getCategory());
+                    }
+                }
+            });
+            menu.getItems().add(item);
+
+
+        }
     }
 
     public void showLoginScreen() {
@@ -99,63 +132,16 @@ public class Controller  {
     }
 
     public void clickSearch(ActionEvent actionEvent) {
+        int i=0;
+        for (Document_item item:currentRequest.getItems()) {
+            i++;
+            String selector="#txtParam"+i;
+            TextField txt=(TextField) menuBar.getScene().lookup(selector);
+            item.setValue(txt.getText());
+
+        }
+        AreaResult.setText(currentRequest.ExecuteRequest());
     }
 
-    public void click_SimpleQ1(ActionEvent actionEvent) {
-        desc.setText("Find a Restaurant ");
-        lblparam1.setText("Name");
-        lblparam2.setText("Cuisine");
-        lblparam3.setText("Borough");
-        lblparam4.setText("");
-        lblparam5.setText("");
-        lblparam6.setText("");
-    }
 
-    public void click_SimpleQ2(ActionEvent actionEvent) {
-        desc.setText("Find a Restaurant with a high score ");
-        lblparam1.setText("Cuisine");
-        lblparam2.setText("Score above than :");
-        lblparam3.setText("");
-        lblparam4.setText("");
-        lblparam5.setText("");
-        lblparam6.setText("");
-
-    }
-
-    public void click_SimpleQ3(ActionEvent actionEvent) {
-        lblparam1.setText("");
-        lblparam2.setText("");
-        lblparam3.setText("");
-        lblparam4.setText("");
-        lblparam5.setText("");
-        lblparam6.setText("");
-
-    }
-
-    public void click_AggregQ1(ActionEvent actionEvent) {
-        lblparam1.setText("");
-        lblparam2.setText("");
-        lblparam3.setText("");
-        lblparam4.setText("");
-        lblparam5.setText("");
-        lblparam6.setText("");
-    }
-
-    public void click_AggregQ2(ActionEvent actionEvent) {
-        lblparam1.setText("Test");
-        lblparam2.setText("");
-        lblparam3.setText("");
-        lblparam4.setText("");
-        lblparam5.setText("");
-        lblparam6.setText("");
-    }
-
-    public void click_AggregQ3(ActionEvent actionEvent) {
-        lblparam1.setText("");
-        lblparam2.setText("");
-        lblparam3.setText("");
-        lblparam4.setText("");
-        lblparam5.setText("");
-        lblparam6.setText("");
-    }
 }
