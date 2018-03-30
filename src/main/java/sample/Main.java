@@ -21,8 +21,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/LoginPage.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("MongoDB Interface");
+        primaryStage.setScene(new Scene(root, 1200, 1000));
         primaryStage.show();
 
         

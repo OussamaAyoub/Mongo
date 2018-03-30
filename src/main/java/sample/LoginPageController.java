@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,10 +21,20 @@ import java.util.ArrayList;
 public class LoginPageController {
     @FXML
     PasswordField passwordField;
+    @FXML TextField userField;
+    @FXML Button btnConnect;
 
+    String user = "User";
+    String password = "1234";
 
     public void handle_btnLogin(ActionEvent actionEvent) {
-        ShowClientScreen();
+
+        //AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!","Welcome " + userField.getText());
+
+        if ((userField.getText() == user )&&(passwordField.getText() == password)){
+            ShowClientScreen();
+        }
+
     }
 
     public void handle_btnAdmin(ActionEvent actionEvent) {
@@ -31,23 +42,6 @@ public class LoginPageController {
 
     }
 
-    public void setLoggedInUser(String user) {
-
-        //loggedInUser = user;
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        alert.setTitle("Successful login");
-
-        alert.setHeaderText("Successful login");
-
-        String s = user + " logged in!";
-
-        alert.setContentText(s);
-
-        alert.show();
-
-    }
 
     public void ShowClientScreen(){
         Stage stage=(Stage) passwordField.getScene().getWindow();
@@ -60,7 +54,7 @@ public class LoginPageController {
             e.printStackTrace();
         }
         s.setTitle("MongoDB Interface");
-        s.setScene(new Scene(root, 623, 413));
+        s.setScene(new Scene(root, 1200, 1000));
         s.show();
 
 
@@ -87,7 +81,6 @@ public class LoginPageController {
             @Override
             public void handle(ActionEvent event) {
 
-                //setLoggedInUser(textUser.getText());
                 final Stage s = new Stage();
                 Parent root = null;
                 try {
@@ -96,7 +89,7 @@ public class LoginPageController {
                     e.printStackTrace();
                 }
                 s.setTitle("Administrator Page");
-                s.setScene(new Scene(root, 500, 500));
+                s.setScene(new Scene(root, 1200, 1000));
                 s.show();
 
             }
