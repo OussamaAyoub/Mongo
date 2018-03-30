@@ -29,6 +29,7 @@
                    <Menu mnemonicParsing="false" text="Setting">
                        <items>
                            <MenuItem mnemonicParsing="false" onAction="#click_admin" text="Admin" />
+                           <MenuItem mnemonicParsing="false" onAction="#click_quit" text="Quit" />
                        </items>
                    </Menu>
                </menus>
