@@ -52,7 +52,7 @@ public class Controller  {
 
     @FXML
     public void initialize(){
-
+        currentRequest=null;
         SLfile sLfile=new SLfile();
         requests=sLfile.LoadRequest();
         //aggregates=sLfile.LoadAggregate();
@@ -72,7 +72,6 @@ public class Controller  {
                         j++;
                         String selector="#lblparam"+j;
                         Label label=(Label) menuBar.getScene().lookup(selector);
-                        System.out.println(label.getId());
                         label.setText(doc_item.getCategory());
                     }
                 }
@@ -133,23 +132,47 @@ public class Controller  {
 
     public void clickSearch(ActionEvent actionEvent) {
         int i=0;
+        try{
+            currentRequest.equals(null);
+
+        }
+        catch (Exception e){
+            AreaResult.setText("Select a query first !");
+            return;
+        }
         for (Document_item item:currentRequest.getItems()) {
             i++;
             String selector="#txtParam"+i;
             TextField txt=(TextField) menuBar.getScene().lookup(selector);
-            System.out.println("SOHFELAZBJDPLCAJHZBKFJAZNAD");
-            System.out.println(item.getValue().getClass());
+            if(txt.getText().equals("")){
+                AreaResult.setText("Missing Fields");
+                return;
+            }
             if(item.getValue().getClass().getName().equals("java.lang.String")){
                 item.setValue(txt.getText());
             }
             else {
-                int foo = Integer.parseInt(txt.getText());
+                int foo=-1;
+                try{
+                    foo = Integer.parseInt(txt.getText());
+                }
+                catch (NumberFormatException e){
+                    AreaResult.setText(e.toString());
+                    return;
+                }
                 item.setValue(new BasicDBObject("$gt",foo));
             }
 
 
         }
-        AreaResult.setText(currentRequest.ExecuteRequest());
+        String result=currentRequest.ExecuteRequest();
+        if(result!=""){
+            AreaResult.setText(currentRequest.ExecuteRequest());
+        }
+        else{
+            AreaResult.setText("No result !");
+        }
+
     }
 
 
