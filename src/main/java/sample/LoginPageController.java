@@ -1,22 +1,27 @@
 package sample;
 
+import com.sun.org.apache.regexp.internal.RE;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class LoginPageController {
+    @FXML
+    PasswordField passwordField;
+
+
     public void handle_btnLogin(ActionEvent actionEvent) {
         ShowClientScreen();
     }
@@ -45,7 +50,8 @@ public class LoginPageController {
     }
 
     public void ShowClientScreen(){
-
+        Stage stage=(Stage) passwordField.getScene().getWindow();
+        stage.close();
         final Stage s = new Stage();
         Parent root = null;
         try {
@@ -54,13 +60,14 @@ public class LoginPageController {
             e.printStackTrace();
         }
         s.setTitle("MongoDB Interface");
-        s.setScene(new Scene(root, 500, 500));
+        s.setScene(new Scene(root, 623, 413));
         s.show();
 
 
     }
     public void showLoginScreen() {
-
+        Stage stage1=(Stage) passwordField.getScene().getWindow();
+        stage1.close();
         final Stage stage = new Stage();
 
         VBox box = new VBox();

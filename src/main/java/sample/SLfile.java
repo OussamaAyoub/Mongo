@@ -6,10 +6,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class SLfile {
-    ArrayList<Request> listRequest;
-    public void Save(ArrayList<Request> requests){
+    public ArrayList<Request> listRequest;
+    public ArrayList<Aggregate> listAggregate;
+
+    public void SaveRequest(ArrayList<Request> requests){
         try{
-            FileOutputStream fos= new FileOutputStream("Request");
+            FileOutputStream fos= new FileOutputStream("requests");
             ObjectOutputStream oos= new ObjectOutputStream(fos);
             oos.writeObject(requests);
             oos.close();
@@ -19,27 +21,54 @@ public class SLfile {
         }
 
     }
-    public void Load(){
+    public ArrayList<Request> LoadRequest(){
         listRequest= new ArrayList<Request>();
         try
         {
-            FileInputStream fis = new FileInputStream("myfile");
+            FileInputStream fis = new FileInputStream("requests");
             ObjectInputStream ois = new ObjectInputStream(fis);
             listRequest = (ArrayList) ois.readObject();
             ois.close();
             fis.close();
+            return listRequest;
         }catch(IOException ioe){
             ioe.printStackTrace();
-            return;
+            return listRequest;
         }catch(ClassNotFoundException c){
             System.out.println("Class not found");
             c.printStackTrace();
-            return;
+            return listRequest;
         }
-        for(Request tmp:listRequest){
-            for(Document_item i:tmp.getItems()){
-                System.out.println(i.getValue());
-            }
+    }
+    public void SaveAggregate(ArrayList<Aggregate> aggregates){
+        try{
+            FileOutputStream fos= new FileOutputStream("aggregates");
+            ObjectOutputStream oos= new ObjectOutputStream(fos);
+            oos.writeObject(aggregates);
+            oos.close();
+            fos.close();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+
+    }
+    public ArrayList<Aggregate> LoadAggregate(){
+            listAggregate= new ArrayList<Aggregate>();
+        try
+        {
+            FileInputStream fis = new FileInputStream("aggregates");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            listRequest = (ArrayList) ois.readObject();
+            ois.close();
+            fis.close();
+            return listAggregate;
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+            return listAggregate;
+        }catch(ClassNotFoundException c){
+            System.out.println("Class not found");
+            c.printStackTrace();
+            return listAggregate;
         }
     }
 

@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import javax.swing.table.TableColumn;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller  {
     @FXML
@@ -37,10 +38,15 @@ public class Controller  {
     @FXML
     MenuItem AggregQ1;
 
+    private ArrayList<Request> requests;
+    private ArrayList<Aggregate> aggregates;
 
-
-
-
+    @FXML
+    public void initialize(){
+        SLfile sLfile=new SLfile();
+        requests=sLfile.LoadRequest();
+        aggregates=sLfile.LoadAggregate();
+    }
 
     public void showLoginScreen() {
 

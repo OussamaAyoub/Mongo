@@ -10,24 +10,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:ID="http://javafx.com/javafx/9.0.4" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="413.0" prefWidth="623.0" xmlns:ID="http://javafx.com/javafx/9.0.4" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-       <Pane layoutY="1.0" prefHeight="398.0" prefWidth="600.0">
+       <Pane layoutY="1.0" prefHeight="438.0" prefWidth="623.0">
            <children>
                <MenuBar>
                    <menus>
-                       <Menu mnemonicParsing="false" text="Simple Queries">
+                       <Menu fx:id="MenuRequests" mnemonicParsing="false" text="Simple Queries">
                            <items>
-                               <MenuItem fx:id="SimpleQ1" mnemonicParsing="false" onAction="#click_SimpleQ1" text="Search a restaurant" />
-                               <MenuItem fx:id="SimpleQ2" mnemonicParsing="false" onAction="#click_SimpleQ2" text="Querie 2" />
-                               <MenuItem fx:id="SimpleQ3" mnemonicParsing="false" onAction="#click_SimpleQ3" text="Querie 3" />
+                               <MenuItem fx:id="SimpleQ1" mnemonicParsing="false" text="Search a restaurant" />
+                               <MenuItem fx:id="SimpleQ2" mnemonicParsing="false" text="Querie 2" />
+                               <MenuItem fx:id="SimpleQ3" mnemonicParsing="false" text="Querie 3" />
                            </items>
                        </Menu>
-                       <Menu mnemonicParsing="false" text="Aggregate">
+                       <Menu fx:id="MenuAggregates" mnemonicParsing="false" text="Aggregate">
                            <items>
-                               <MenuItem fx:id="AggregQ1" mnemonicParsing="false" onAction="#click_AggregQ1" text="Queries 1" />
-                               <MenuItem fx:id="AggregQ2" mnemonicParsing="false" onAction="#click_AggregQ2" text="Queries 2" />
-                               <MenuItem fx:id="AggregQ3" mnemonicParsing="false" onAction="#click_AggregQ3" text="Queries 3" />
+                               <MenuItem fx:id="AggregQ1" mnemonicParsing="false"  text="Queries 1" />
+                               <MenuItem fx:id="AggregQ2" mnemonicParsing="false"  text="Queries 2" />
+                               <MenuItem fx:id="AggregQ3" mnemonicParsing="false"  text="Queries 3" />
 
                            </items>
                        </Menu>
@@ -56,7 +56,7 @@
 
                <Button fx:id="btnSearch" layoutX="280.0" layoutY="199.0" mnemonicParsing="false" onAction="#clickSearch" text="Search" />
                <Label fx:id="desc" layoutX="24.0" layoutY="41.0" text="Description : " />
-            <TextArea layoutX="16.0" layoutY="232.0" prefHeight="152.0" prefWidth="568.0" />
+            <TextArea layoutX="16.0" layoutY="232.0" prefHeight="152.0" prefWidth="590.0" />
 
 
            </children>

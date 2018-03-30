@@ -30,10 +30,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        //launch(args);
-        SLfile file=new SLfile();
-        file.Save();
-        file.Load();
+        launch(args);
         /*ArrayList<Request> requests=new ArrayList<Request>();
         Document_item item=new Document_item("name","Startbucks Coffee");
         Document_item item1=new Document_item("borough","Bronx");
